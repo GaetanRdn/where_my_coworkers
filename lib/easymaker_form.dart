@@ -23,12 +23,11 @@ class _EasymakerFormPageState extends State<EasymakerFormPage> {
             children: <Widget>[
               const TextField(
                 autofocus: true,
-                decoration: InputDecoration(label: Text('First name')),
+                decoration: InputDecoration(labelText: 'First name'),
               ),
               const SizedBox(height: 20),
               const TextField(
-                autofocus: true,
-                decoration: InputDecoration(label: Text('Last name')),
+                decoration: InputDecoration(labelText: 'Last name'),
               ),
               const SizedBox(height: 20),
               FloatingActionButton.extended(

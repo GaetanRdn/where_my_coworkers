@@ -19,12 +19,12 @@ void main() {
     expect(
         find.byWidgetPredicate((Widget widget) =>
             widget is TextField &&
-            (widget.decoration?.label as Text).data == 'First name'),
+            widget.decoration?.labelText == 'First name'),
         findsOneWidget);
     expect(
         find.byWidgetPredicate((Widget widget) =>
             widget is TextField &&
-            (widget.decoration?.label as Text).data == 'Last name'),
+            widget.decoration?.labelText == 'Last name'),
         findsOneWidget);
     expect(
         find.byWidgetPredicate((Widget widget) =>
