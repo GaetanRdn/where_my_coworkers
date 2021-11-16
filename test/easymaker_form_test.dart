@@ -30,8 +30,7 @@ void main() {
             widget is FloatingActionButton &&
             widget.isExtended &&
             widget.child != null &&
-            widget.child is Icon &&
-            (widget.child as Icon).icon == Icons.add),
+            widget.child is Icon),
         findsOneWidget);
   });
 }
