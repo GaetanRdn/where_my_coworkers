@@ -23,14 +23,14 @@ void main() {
         findsOneWidget);
     expect(
         find.byWidgetPredicate((Widget widget) =>
-            widget is TextField &&
-            widget.decoration?.labelText == 'Last name'),
+            widget is TextField && widget.decoration?.labelText == 'Last name'),
         findsOneWidget);
     expect(
         find.byWidgetPredicate((Widget widget) =>
             widget is FloatingActionButton &&
             widget.isExtended &&
             widget.child != null &&
+            widget.child is Icon &&
             (widget.child as Icon).icon == Icons.add),
         findsOneWidget);
   });
