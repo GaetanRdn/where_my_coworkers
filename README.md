@@ -1,3 +1,5 @@
+[![Tests](https://github.com/GaetanRdn/easymakers_tracker/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/GaetanRdn/easymakers_tracker/actions/workflows/test.yml)
+
 # easymakers_tracker
 
 Allow to get information about easymakers and their missions
