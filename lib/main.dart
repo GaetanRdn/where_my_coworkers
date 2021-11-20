@@ -1,4 +1,6 @@
+
 import 'package:easymakers_tracker/easymaker_form.dart';
+import 'package:easymakers_tracker/easymaker_storage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const EasymakerFormPage(),
+      home: EasymakerFormPage(storage: EasymakerStorage()),
     );
   }
 }
