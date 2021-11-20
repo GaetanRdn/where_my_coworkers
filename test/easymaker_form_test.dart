@@ -1,14 +1,17 @@
 import 'package:easymakers_tracker/easymaker_form.dart';
+import 'package:easymakers_tracker/easymaker_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Check widgets', (WidgetTester tester) async {
     // GIVEN
-    const form = EasymakerFormPage();
+    EasymakerStorage storage = EasymakerStorage();
+
+    EasymakerFormPage form = EasymakerFormPage(storage: storage);
 
     // WHEN
-    await tester.pumpWidget(const MaterialApp(
+    await tester.pumpWidget(MaterialApp(
       home: form,
     ));
     await tester.pump(const Duration());
