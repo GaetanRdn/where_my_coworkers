@@ -30,10 +30,7 @@ void main() {
         findsOneWidget);
     expect(
         find.byWidgetPredicate((Widget widget) =>
-            widget is FloatingActionButton &&
-            widget.isExtended &&
-            widget.child != null &&
-            widget.child is Icon),
+            widget is FloatingActionButton),
         findsOneWidget);
   });
 }
