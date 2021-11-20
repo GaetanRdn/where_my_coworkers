@@ -6,7 +6,7 @@ class EasymakerStorage {
 
   Future<void> writeEasymaker(String lastName, String firstName) async {
     final id = _db.collection('easymakers').doc().id;
-    _db.collection('easymakers').doc(id).set(Easymaker(lastName, firstName).toJson());
+    _db.collection('easymakers').doc(id).set(Easymaker(lastName, firstName, id).toJson());
     return Future.value();
   }
 }
