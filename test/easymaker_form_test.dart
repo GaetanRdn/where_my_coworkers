@@ -29,8 +29,7 @@ void main() {
             widget is TextField && widget.decoration?.labelText == 'Last name'),
         findsOneWidget);
     expect(
-        find.byWidgetPredicate((Widget widget) =>
-            widget is FloatingActionButton),
+        find.widgetWithIcon(FloatingActionButton, Icons.add),
         findsOneWidget);
   });
 }
