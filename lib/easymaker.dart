@@ -1,16 +1,15 @@
 class Easymaker {
   final String lastName;
   final String firstName;
-  final int id;
+  int? id;
 
-  Easymaker(this.id, this.lastName, this.firstName);
+  Easymaker(this.lastName, this.firstName, [this.id]);
 
   factory Easymaker.fromJson(Map<String, dynamic> json) {
     return Easymaker(json['id'], json['lastName'], json['firstName']);
   }
 
-  Map toJson() => {
-        'id': id,
+  Map<String, dynamic> toJson() => {
         'lastName': lastName,
         'firstName': firstName,
       };
