@@ -1,8 +1,9 @@
-
 import 'package:easymakers_tracker/client_form.dart';
 import 'package:easymakers_tracker/client_storage.dart';
 import 'package:easymakers_tracker/easymaker_form.dart';
 import 'package:easymakers_tracker/easymaker_storage.dart';
+import 'package:easymakers_tracker/mission_form.dart';
+import 'package:easymakers_tracker/mission_storage.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -49,6 +50,11 @@ class _HomePageState extends State<HomePage> {
         children: [
           EasymakerFormPage(storage: EasymakerStorage()),
           ClientFormPage(storage: ClientStorage()),
+          MissionFormPage(
+            easymakerStorage: EasymakerStorage(),
+            clientStorage: ClientStorage(),
+            missionStorage: MissionStorage(),
+          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -59,6 +65,8 @@ class _HomePageState extends State<HomePage> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.face), label: 'Easymakers'),
           BottomNavigationBarItem(icon: Icon(Icons.business), label: 'Clients'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.military_tech), label: 'Mission'),
         ],
       ),
     );

@@ -13,4 +13,14 @@ class ClientStorage {
         .set(Client(name, street, city, zipCode, country, id).toJson());
     return Future.value();
   }
+
+  Future<List<Client>> getStream() {
+    return _db.collection('clients').get().then((value) {
+      if (value != null) {
+        List<Client> clients = value.entries.map((e) => Client.fromJson(e.value)).toList();
+        return Future.value(clients);
+      }
+      return Future.value([]);
+    });
+  }
 }

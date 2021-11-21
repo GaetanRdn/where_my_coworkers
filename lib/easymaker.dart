@@ -6,7 +6,7 @@ class Easymaker {
   Easymaker(this.lastName, this.firstName, this.id);
 
   factory Easymaker.fromJson(Map<String, dynamic> json) {
-    return Easymaker(json['id'], json['lastName'], json['firstName']);
+    return Easymaker(json['lastName'], json['firstName'], json['id']);
   }
 
   Map<String, dynamic> toJson() => {
@@ -14,4 +14,10 @@ class Easymaker {
         'lastName': lastName,
         'firstName': firstName,
       };
+
+  @override
+  bool operator ==(Object other) => other is Easymaker && other.id == id;
+
+  @override
+  int get hashCode => id.hashCode;
 }
