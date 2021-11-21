@@ -29,12 +29,12 @@ class _MissionFormPageState extends State<MissionFormPage> {
   Easymaker? easymaker;
   Client? client;
 
-  Future<List<Easymaker>> loadEasymakers() async {
-    return await widget.easymakerStorage.getStream();
+  Future<List<Easymaker>> loadEasymakers() {
+    return widget.easymakerStorage.getAll();
   }
 
-  Future<List<Client>> loadClients() async {
-    return await widget.clientStorage.getStream();
+  Future<List<Client>> loadClients() {
+    return widget.clientStorage.getStream();
   }
 
   Future<void> _create() {

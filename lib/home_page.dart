@@ -1,7 +1,7 @@
 import 'package:easymakers_tracker/client_form.dart';
 import 'package:easymakers_tracker/client_storage.dart';
-import 'package:easymakers_tracker/easymaker_form.dart';
 import 'package:easymakers_tracker/easymaker_storage.dart';
+import 'package:easymakers_tracker/easymakers_page.dart';
 import 'package:easymakers_tracker/mission_form.dart';
 import 'package:easymakers_tracker/mission_storage.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +15,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   void pageChanged(int index) {
     setState(() {
@@ -48,7 +43,7 @@ class _HomePageState extends State<HomePage> {
         },
         controller: _pageController,
         children: [
-          EasymakerFormPage(storage: EasymakerStorage()),
+          const EasymakersPage(),
           ClientFormPage(storage: ClientStorage()),
           MissionFormPage(
             easymakerStorage: EasymakerStorage(),

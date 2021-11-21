@@ -2,9 +2,9 @@ import 'package:easymakers_tracker/easymaker_storage.dart';
 import 'package:flutter/material.dart';
 
 class EasymakerFormPage extends StatefulWidget {
-  const EasymakerFormPage({Key? key, required this.storage}) : super(key: key);
+  EasymakerFormPage({Key? key}) : super(key: key);
 
-  final EasymakerStorage storage;
+  final EasymakerStorage storage = EasymakerStorage();
 
   @override
   State<EasymakerFormPage> createState() => _EasymakerFormPageState();
@@ -23,6 +23,8 @@ class _EasymakerFormPageState extends State<EasymakerFormPage> {
       const snackBar = SnackBar(content: Text('Created!'), backgroundColor: Colors.green,);
 
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+      Navigator.pop(context);
     });
   }
 

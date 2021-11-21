@@ -12,7 +12,7 @@ class EasymakerStorage {
     return Future.value();
   }
 
-  Future<List<Easymaker>> getStream() {
+  Future<List<Easymaker>> getAll() {
     return _db.collection('easymakers').get().then((value) {
       if (value != null) {
         List<Easymaker> easymakers = value.entries.map((e) => Easymaker.fromJson(e.value)).toList();
