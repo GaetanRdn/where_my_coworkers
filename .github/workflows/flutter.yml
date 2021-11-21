@@ -25,5 +25,5 @@ jobs:
         flutter-version: '2.0.5'
     - run: flutter pub get
     - run: flutter test
-    - run: flutter build web
+    - run: flutter build web --release
     - run: cp -rf ./build/web ./docs
