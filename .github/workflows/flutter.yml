@@ -26,4 +26,4 @@ jobs:
     - run: flutter pub get
     - run: flutter test
     - run: flutter build web --release
-    - run: cp -rf ./build/web ./docs
+    - run: ls -la ./build/web
