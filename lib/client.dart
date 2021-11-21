@@ -10,8 +10,8 @@ class Client {
       this.id);
 
   factory Client.fromJson(Map<String, dynamic> json) {
-    return Client(json['id'], json['name'], json['street'], json['city'],
-        json['zipCode'], json['country']);
+    return Client(json['name'], json['street'], json['city'],
+        json['zipCode'], json['country'], json['id']);
   }
 
   Map<String, dynamic> toJson() => {
@@ -22,4 +22,10 @@ class Client {
         'zipCode': zipCode,
         'country': country,
       };
+
+  @override
+  bool operator ==(Object other) => other is Client && other.id == id;
+
+  @override
+  int get hashCode => id.hashCode;
 }
