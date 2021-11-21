@@ -4,6 +4,8 @@
 
 Allow to get information about easymakers and their missions
 
+Web app is accessible [here](https://gaetanrdn.github.io/easymakers_tracker/#/)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
