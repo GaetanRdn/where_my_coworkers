@@ -1,4 +1,6 @@
-[![Tests](https://github.com/GaetanRdn/easymakers_tracker/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/GaetanRdn/easymakers_tracker/actions/workflows/test.yml)
+[![Tests](https://github.com/GaetanRdn/easymakers_tracker/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/GaetanRdn/easymakers_tracker/actions/workflows/flutter.yml)
+
+[![Publish to GitHub Pages](https://github.com/GaetanRdn/easymakers_tracker/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/GaetanRdn/easymakers_tracker/actions/workflows/gh-pages.yml)
 
 # easymakers_tracker
 
