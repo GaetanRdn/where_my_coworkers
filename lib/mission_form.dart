@@ -30,7 +30,7 @@ class _MissionFormPageState extends State<MissionFormPage> {
   Client? client;
 
   Future<List<Easymaker>> loadEasymakers() async {
-      return await widget.easymakerStorage.getStream();
+    return await widget.easymakerStorage.getStream();
   }
 
   Future<List<Client>> loadClients() async {
@@ -43,7 +43,9 @@ class _MissionFormPageState extends State<MissionFormPage> {
           .write(easymaker!.id, client!.id)
           .whenComplete(() {
         const snackBar = SnackBar(
-          content: Text('Created!'), backgroundColor: Colors.green,);
+          content: Text('Created!'),
+          backgroundColor: Colors.green,
+        );
 
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       });
@@ -58,64 +60,75 @@ class _MissionFormPageState extends State<MissionFormPage> {
         title: const Text('New Mission'),
       ),
       body: Center(
-      child: ListView(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: <Widget>[
-                FutureBuilder(future: loadEasymakers(), builder: (BuildContext context, AsyncSnapshot<List<Easymaker>> snapshot) {
-                  return easymakerDropdown(context, snapshot);
-                }),
-                const SizedBox(height: 20),
-                FutureBuilder(future: loadClients(), builder: (BuildContext context, AsyncSnapshot<List<Client>> snapshot) {
-                  return clientDropdown(context, snapshot);
-                }),
-                const SizedBox(height: 20),
-                FloatingActionButton.extended(
-                  onPressed: _create,
-                  label: const Text('Create'),
-                  icon: const Icon(Icons.add),
-                )
-              ],
+        child: ListView(children: [
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
+                  FutureBuilder(
+                      future: loadEasymakers(),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<List<Easymaker>> snapshot) {
+                        return easymakerDropdown(context, snapshot);
+                      }),
+                  const SizedBox(height: 20),
+                  FutureBuilder(
+                      future: loadClients(),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<List<Client>> snapshot) {
+                        return clientDropdown(context, snapshot);
+                      }),
+                  const SizedBox(height: 20),
+                  FloatingActionButton.extended(
+                    onPressed: _create,
+                    label: const Text('Create'),
+                    icon: const Icon(Icons.add),
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-      ]),
+        ]),
       ),
     );
   }
 
-  DropdownButtonFormField<Easymaker> easymakerDropdown(BuildContext context, AsyncSnapshot<List<Easymaker>> snapshot) {
-    List<DropdownMenuItem<Easymaker>> items = snapshot.data?.map((e) => DropdownMenuItem<Easymaker>(
-      child: Text(e.firstName + ' - ' + e.lastName),
-      value: e,
-    ))
-        .toList() ?? [];
+  DropdownButtonFormField<Easymaker> easymakerDropdown(
+      BuildContext context, AsyncSnapshot<List<Easymaker>> snapshot) {
+    List<DropdownMenuItem<Easymaker>> items = snapshot.data
+            ?.map((e) => DropdownMenuItem<Easymaker>(
+                  child: Text(e.firstName + ' - ' + e.lastName),
+                  value: e,
+                ))
+            .toList() ??
+        [];
 
     return DropdownButtonFormField<Easymaker>(
-      value: easymaker,
-      onChanged: (val) => setState(() => easymaker = val),
-        decoration: const InputDecoration(label: Text('Easymaker')),
+        value: easymaker,
+        onChanged: (val) => setState(() => easymaker = val),
+        decoration: const InputDecoration(labelText: 'Easymaker'),
         items: items);
   }
 
-  DropdownButtonFormField<Client> clientDropdown(BuildContext context, AsyncSnapshot<List<Client>> snapshot) {
-    List<DropdownMenuItem<Client>> items = snapshot.data?.map((e) => DropdownMenuItem<Client>(
-      child: Text(e.name),
-      value: e,
-    ))
-        .toList() ?? [];
+  DropdownButtonFormField<Client> clientDropdown(
+      BuildContext context, AsyncSnapshot<List<Client>> snapshot) {
+    List<DropdownMenuItem<Client>> items = snapshot.data
+            ?.map((e) => DropdownMenuItem<Client>(
+                  child: Text(e.name),
+                  value: e,
+                ))
+            .toList() ??
+        [];
 
     return DropdownButtonFormField<Client>(
-      value: client,
+        value: client,
         isExpanded: true,
         onChanged: (val) => setState(() => client = val),
-        decoration: const InputDecoration(label: Text('Client')),
+        decoration: const InputDecoration(labelText: 'Client'),
         items: items);
   }
 }
