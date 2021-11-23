@@ -2,6 +2,7 @@ import 'package:easymakers_tracker/client_form.dart';
 import 'package:easymakers_tracker/client_storage.dart';
 import 'package:easymakers_tracker/easymaker_storage.dart';
 import 'package:easymakers_tracker/easymakers_page.dart';
+import 'package:easymakers_tracker/map_page.dart';
 import 'package:easymakers_tracker/mission_form.dart';
 import 'package:easymakers_tracker/mission_storage.dart';
 import 'package:flutter/material.dart';
@@ -50,9 +51,12 @@ class _HomePageState extends State<HomePage> {
             clientStorage: ClientStorage(),
             missionStorage: MissionStorage(),
           ),
+          MapPage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.amber,
+        unselectedItemColor: Colors.blue,
         currentIndex: _selectedIndex,
         onTap: (index) {
           bottomTapped(index);
@@ -62,6 +66,7 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(icon: Icon(Icons.business), label: 'Clients'),
           BottomNavigationBarItem(
               icon: Icon(Icons.military_tech), label: 'Mission'),
+          BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Map'),
         ],
       ),
     );
