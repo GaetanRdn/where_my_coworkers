@@ -1,11 +1,16 @@
 import 'package:easymakers_tracker/client.dart';
 import 'package:localstore/localstore.dart';
+import 'package:geocoder/geocoder.dart';
+
 
 class ClientStorage {
   final Localstore _db = Localstore.instance;
 
   Future<void> write(String name, String street, String city,
       String zipCode, String country) async {
+
+    var addresses = await Geocoder.local.findAddressesFromQuery(street + " " + city + " " + zipCode + " " + country);
+
     final id = _db.collection('clients').doc().id;
     _db
         .collection('clients')
