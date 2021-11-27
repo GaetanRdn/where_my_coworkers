@@ -9,16 +9,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class MissionFormPage extends StatefulWidget {
-  const MissionFormPage(
-      {Key? key,
-      required this.missionStorage,
-      required this.clientStorage,
-      required this.easymakerStorage})
-      : super(key: key);
+  MissionFormPage({Key? key}) : super(key: key);
 
-  final MissionStorage missionStorage;
-  final EasymakerStorage easymakerStorage;
-  final ClientStorage clientStorage;
+  final MissionStorage missionStorage = MissionStorage();
+  final EasymakerStorage easymakerStorage = EasymakerStorage();
+  final ClientStorage clientStorage = ClientStorage();
 
   @override
   State<MissionFormPage> createState() => _MissionFormPageState();
@@ -48,6 +43,8 @@ class _MissionFormPageState extends State<MissionFormPage> {
         );
 
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+        Navigator.pop(context);
       });
     }
     return Future.value();
