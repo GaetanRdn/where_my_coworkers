@@ -1,5 +1,4 @@
 
-import 'package:easymakers_tracker/easymakers_page.dart';
 import 'package:easymakers_tracker/home_page.dart';
 import 'package:flutter/material.dart';
 

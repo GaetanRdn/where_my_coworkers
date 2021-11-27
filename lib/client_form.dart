@@ -1,3 +1,4 @@
+
 import 'package:easymakers_tracker/client_storage.dart';
 import 'package:flutter/material.dart';
 
@@ -13,15 +14,12 @@ class ClientFormPage extends StatefulWidget {
 class _ClientFormPageState extends State<ClientFormPage> {
   final _formKey = GlobalKey<FormState>();
   final nameCtrl = TextEditingController();
-  final streetCtrl = TextEditingController();
-  final cityCtrl = TextEditingController();
-  final zipCodeCtrl = TextEditingController();
-  final countryCtrl = TextEditingController();
+  final latitudeCtrl = TextEditingController();
+  final longitudeCtrl = TextEditingController();
 
   Future<void> _create() {
     return widget.storage
-        .write(nameCtrl.value.text, streetCtrl.value.text, cityCtrl.value.text,
-            zipCodeCtrl.value.text, countryCtrl.value.text)
+        .write(nameCtrl.value.text, double.parse(latitudeCtrl.value.text), double.parse(longitudeCtrl.value.text))
         .whenComplete(() {
       const snackBar = SnackBar(
         content: Text('Created!'),
@@ -56,23 +54,13 @@ class _ClientFormPageState extends State<ClientFormPage> {
                   ),
                   const SizedBox(height: 20),
                   TextField(
-                    controller: streetCtrl,
-                    decoration: const InputDecoration(labelText: 'Street'),
+                    controller: latitudeCtrl,
+                    decoration: const InputDecoration(labelText: 'Latitude'),
                   ),
                   const SizedBox(height: 20),
                   TextField(
-                    controller: cityCtrl,
-                    decoration: const InputDecoration(labelText: 'City'),
-                  ),
-                  const SizedBox(height: 20),
-                  TextField(
-                    controller: zipCodeCtrl,
-                    decoration: const InputDecoration(labelText: 'Zip Code'),
-                  ),
-                  const SizedBox(height: 20),
-                  TextField(
-                    controller: countryCtrl,
-                    decoration: const InputDecoration(labelText: 'Country'),
+                    controller: longitudeCtrl,
+                    decoration: const InputDecoration(labelText: 'Longitude'),
                   ),
                   const SizedBox(height: 20),
                   FloatingActionButton.extended(

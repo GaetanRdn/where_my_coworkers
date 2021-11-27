@@ -1,26 +1,21 @@
 class Client {
   final String name;
-  final String street;
-  final String city;
-  final String zipCode;
-  final String country;
+  final double latitude;
+  final double longitude;
   final String id;
 
-  Client(this.name, this.street, this.city, this.zipCode, this.country,
-      this.id);
+  Client(this.name, this.latitude, this.longitude, this.id);
 
   factory Client.fromJson(Map<String, dynamic> json) {
-    return Client(json['name'], json['street'], json['city'],
-        json['zipCode'], json['country'], json['id']);
+    return Client(
+        json['name'], json['latitude'], json['longitude'], json['id']);
   }
 
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
-        'street': street,
-        'city': city,
-        'zipCode': zipCode,
-        'country': country,
+        'latitude': latitude,
+        'longitude': longitude,
       };
 
   @override
