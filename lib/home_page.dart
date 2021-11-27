@@ -1,5 +1,5 @@
-import 'package:easymakers_tracker/client_form.dart';
 import 'package:easymakers_tracker/client_storage.dart';
+import 'package:easymakers_tracker/clients_page.dart';
 import 'package:easymakers_tracker/easymaker_storage.dart';
 import 'package:easymakers_tracker/easymakers_page.dart';
 import 'package:easymakers_tracker/map_page.dart';
@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
         controller: _pageController,
         children: [
           const EasymakersPage(),
-          ClientFormPage(storage: ClientStorage()),
+          const ClientsPage(),
           MissionFormPage(
             easymakerStorage: EasymakerStorage(),
             clientStorage: ClientStorage(),
