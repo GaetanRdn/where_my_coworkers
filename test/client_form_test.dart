@@ -1,14 +1,11 @@
 import 'package:easymakers_tracker/client_form.dart';
-import 'package:easymakers_tracker/client_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Check widgets', (WidgetTester tester) async {
     // GIVEN
-    ClientStorage storage = ClientStorage();
-
-    ClientFormPage form = ClientFormPage(storage: storage);
+    ClientFormPage form = ClientFormPage();
 
     // WHEN
     await tester.pumpWidget(MaterialApp(

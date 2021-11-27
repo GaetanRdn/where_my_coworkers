@@ -3,9 +3,9 @@ import 'package:easymakers_tracker/client_storage.dart';
 import 'package:flutter/material.dart';
 
 class ClientFormPage extends StatefulWidget {
-  const ClientFormPage({Key? key, required this.storage}) : super(key: key);
+  ClientFormPage({Key? key}) : super(key: key);
 
-  final ClientStorage storage;
+  final ClientStorage storage = ClientStorage();
 
   @override
   State<ClientFormPage> createState() => _ClientFormPageState();
@@ -27,6 +27,8 @@ class _ClientFormPageState extends State<ClientFormPage> {
       );
 
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+      Navigator.pop(context);
     });
   }
 
