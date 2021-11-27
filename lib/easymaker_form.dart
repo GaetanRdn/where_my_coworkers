@@ -15,17 +15,21 @@ class _EasymakerFormPageState extends State<EasymakerFormPage> {
   final lastNameCtrl = TextEditingController();
   final firstNameCtrl = TextEditingController();
 
-  Future<void> _createEasymaker() {
-    return widget.storage
-        .writeEasymaker(
-            lastNameCtrl.value.text, firstNameCtrl.value.text)
-        .whenComplete(() {
-      const snackBar = SnackBar(content: Text('Created!'), backgroundColor: Colors.green,);
+  void _createEasymaker() {
+    if (_formKey.currentState!.validate()) {
+      widget.storage
+          .writeEasymaker(lastNameCtrl.value.text, firstNameCtrl.value.text)
+          .whenComplete(() {
+        const snackBar = SnackBar(
+          content: Text('Created!'),
+          backgroundColor: Colors.green,
+        );
 
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
-      Navigator.pop(context);
-    });
+        Navigator.pop(context);
+      });
+    }
   }
 
   @override
@@ -43,15 +47,27 @@ class _EasymakerFormPageState extends State<EasymakerFormPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
-                TextField(
+                TextFormField(
                   autofocus: true,
                   controller: firstNameCtrl,
-                  decoration: const InputDecoration(labelText: 'First name'),
+                  decoration: const InputDecoration(labelText: 'First name *'),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Required';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 20),
-                TextField(
+                TextFormField(
                   controller: lastNameCtrl,
-                  decoration: const InputDecoration(labelText: 'Last name'),
+                  decoration: const InputDecoration(labelText: 'Last name *'),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Required';
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 20),
                 FloatingActionButton.extended(
