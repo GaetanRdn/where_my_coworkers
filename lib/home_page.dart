@@ -1,10 +1,7 @@
-import 'package:easymakers_tracker/client_storage.dart';
 import 'package:easymakers_tracker/clients_page.dart';
-import 'package:easymakers_tracker/easymaker_storage.dart';
 import 'package:easymakers_tracker/easymakers_page.dart';
 import 'package:easymakers_tracker/map_page.dart';
-import 'package:easymakers_tracker/mission_form.dart';
-import 'package:easymakers_tracker/mission_storage.dart';
+import 'package:easymakers_tracker/missions_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -43,15 +40,11 @@ class _HomePageState extends State<HomePage> {
           pageChanged(index);
         },
         controller: _pageController,
-        children: [
-          const EasymakersPage(),
-          const ClientsPage(),
-          MissionFormPage(
-            easymakerStorage: EasymakerStorage(),
-            clientStorage: ClientStorage(),
-            missionStorage: MissionStorage(),
-          ),
-          const MapPage(),
+        children: const [
+          EasymakersPage(),
+          ClientsPage(),
+          MissionsPage(),
+          MapPage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

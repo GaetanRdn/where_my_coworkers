@@ -4,8 +4,6 @@ import 'package:easymakers_tracker/easymaker_storage.dart';
 import 'package:flutter/material.dart';
 
 class EasymakersPage extends StatefulWidget {
-  static String route = '/easymakers';
-
   const EasymakersPage({Key? key}) : super(key: key);
 
   @override
