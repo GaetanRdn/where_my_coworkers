@@ -19,4 +19,8 @@ class MissionStorage {
       return Future.value([]);
     });
   }
+
+  Future remove(String id) {
+    return _db.collection('missions').doc(id).delete();
+  }
 }
