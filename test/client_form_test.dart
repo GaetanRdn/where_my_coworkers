@@ -26,19 +26,11 @@ void main() {
         findsOneWidget);
     expect(
         find.byWidgetPredicate((Widget widget) =>
-            widget is TextField && widget.decoration?.labelText == 'Street'),
+            widget is TextField && widget.decoration?.labelText == 'Latitude'),
         findsOneWidget);
     expect(
         find.byWidgetPredicate((Widget widget) =>
-        widget is TextField && widget.decoration?.labelText == 'City'),
-        findsOneWidget);
-    expect(
-        find.byWidgetPredicate((Widget widget) =>
-        widget is TextField && widget.decoration?.labelText == 'Zip Code'),
-        findsOneWidget);
-    expect(
-        find.byWidgetPredicate((Widget widget) =>
-        widget is TextField && widget.decoration?.labelText == 'Country'),
+        widget is TextField && widget.decoration?.labelText == 'Longitude'),
         findsOneWidget);
     expect(
         find.widgetWithIcon(FloatingActionButton, Icons.add),
