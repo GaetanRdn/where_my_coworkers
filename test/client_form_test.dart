@@ -19,15 +19,15 @@ void main() {
     expect(
         find.byWidgetPredicate((Widget widget) =>
             widget is TextField &&
-            widget.decoration?.labelText == 'Name'),
+            widget.decoration?.labelText == 'Name *'),
         findsOneWidget);
     expect(
         find.byWidgetPredicate((Widget widget) =>
-            widget is TextField && widget.decoration?.labelText == 'Latitude'),
+            widget is TextField && widget.decoration?.labelText == 'Latitude *'),
         findsOneWidget);
     expect(
         find.byWidgetPredicate((Widget widget) =>
-        widget is TextField && widget.decoration?.labelText == 'Longitude'),
+        widget is TextField && widget.decoration?.labelText == 'Longitude *'),
         findsOneWidget);
     expect(
         find.widgetWithIcon(FloatingActionButton, Icons.add),
