@@ -20,12 +20,12 @@ void main() {
     expect(
         find.byWidgetPredicate((Widget widget) =>
             widget is DropdownButtonFormField<Easymaker> &&
-            widget.decoration.labelText == 'Easymaker'),
+            widget.decoration.labelText == 'Easymaker *'),
         findsOneWidget);
     expect(
         find.byWidgetPredicate((Widget widget) =>
             widget is DropdownButtonFormField<Client> &&
-            widget.decoration.labelText == 'Client'),
+            widget.decoration.labelText == 'Client *'),
         findsOneWidget);
     expect(
         find.widgetWithIcon(FloatingActionButton, Icons.add), findsOneWidget);
