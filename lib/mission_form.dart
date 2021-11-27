@@ -32,11 +32,9 @@ class _MissionFormPageState extends State<MissionFormPage> {
     return widget.clientStorage.getAll();
   }
 
-  Future<void> _create() {
-    if (easymaker != null && client != null) {
-      return widget.missionStorage
-          .write(easymaker!.id, client!.id)
-          .whenComplete(() {
+  void _create() {
+    if (_formKey.currentState!.validate()) {
+      widget.missionStorage.write(easymaker!.id, client!.id).whenComplete(() {
         const snackBar = SnackBar(
           content: Text('Created!'),
           backgroundColor: Colors.green,
@@ -47,7 +45,6 @@ class _MissionFormPageState extends State<MissionFormPage> {
         Navigator.pop(context);
       });
     }
-    return Future.value();
   }
 
   @override
@@ -105,6 +102,12 @@ class _MissionFormPageState extends State<MissionFormPage> {
         [];
 
     return DropdownButtonFormField<Easymaker>(
+        validator: (value) {
+          if (value == null) {
+            return 'Required';
+          }
+          return null;
+        },
         value: easymaker,
         onChanged: (val) => setState(() => easymaker = val),
         decoration: const InputDecoration(labelText: 'Easymaker'),
@@ -122,6 +125,12 @@ class _MissionFormPageState extends State<MissionFormPage> {
         [];
 
     return DropdownButtonFormField<Client>(
+        validator: (value) {
+          if (value == null) {
+            return 'Required';
+          }
+          return null;
+        },
         value: client,
         isExpanded: true,
         onChanged: (val) => setState(() => client = val),
