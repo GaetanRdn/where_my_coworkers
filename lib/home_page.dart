@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
             clientStorage: ClientStorage(),
             missionStorage: MissionStorage(),
           ),
-          MapPage(),
+          const MapPage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
