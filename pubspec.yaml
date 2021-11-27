@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   path_provider: ^2.0.7
   localstore: ^1.2.1
-  flutter_map: ^0.14.0
+  flutter_map:
 
 dev_dependencies:
   flutter_test:
