@@ -6,7 +6,7 @@ class Mission {
   Mission(this.easymakerId, this.clientId, this.id);
 
   factory Mission.fromJson(Map<String, dynamic> json) {
-    return Mission(json['id'], json['easymakerId'], json['clientId']);
+    return Mission(json['easymakerId'], json['clientId'], json['id']);
   }
 
   Map<String, dynamic> toJson() => {

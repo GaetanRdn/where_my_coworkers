@@ -34,7 +34,7 @@ class _MissionFormPageState extends State<MissionFormPage> {
   }
 
   Future<List<Client>> loadClients() {
-    return widget.clientStorage.getStream();
+    return widget.clientStorage.getAll();
   }
 
   Future<void> _create() {

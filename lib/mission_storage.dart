@@ -9,4 +9,14 @@ class MissionStorage {
     _db.collection('missions').doc(id).set(Mission(easymakerId, clientId, id).toJson());
     return Future.value();
   }
+
+  Future<List<Mission>> getAll() {
+    return _db.collection('missions').get().then((value) {
+      if (value != null) {
+        List<Mission> missions = value.entries.map((e) => Mission.fromJson(e.value)).toList();
+        return Future.value(missions);
+      }
+      return Future.value([]);
+    });
+  }
 }
