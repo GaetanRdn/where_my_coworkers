@@ -17,19 +17,22 @@ class _ClientFormPageState extends State<ClientFormPage> {
   final latitudeCtrl = TextEditingController();
   final longitudeCtrl = TextEditingController();
 
-  Future<void> _create() {
-    return widget.storage
-        .write(nameCtrl.value.text, double.parse(latitudeCtrl.value.text), double.parse(longitudeCtrl.value.text))
-        .whenComplete(() {
-      const snackBar = SnackBar(
-        content: Text('Created!'),
-        backgroundColor: Colors.green,
-      );
+  void _create() {
+    if (_formKey.currentState!.validate()) {
+      widget.storage
+          .write(nameCtrl.value.text, double.parse(latitudeCtrl.value.text),
+          double.parse(longitudeCtrl.value.text))
+          .whenComplete(() {
+        const snackBar = SnackBar(
+          content: Text('Created!'),
+          backgroundColor: Colors.green,
+        );
 
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
-      Navigator.pop(context);
-    });
+        Navigator.pop(context);
+      });
+    }
   }
 
   @override
@@ -49,20 +52,38 @@ class _ClientFormPageState extends State<ClientFormPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
-                  TextField(
+                  TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Required';
+                      }
+                      return null;
+                    },
                     autofocus: true,
                     controller: nameCtrl,
-                    decoration: const InputDecoration(labelText: 'Name'),
+                    decoration: const InputDecoration(labelText: 'Name *'),
                   ),
                   const SizedBox(height: 20),
-                  TextField(
+                  TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Required';
+                      }
+                      return null;
+                    },
                     controller: latitudeCtrl,
-                    decoration: const InputDecoration(labelText: 'Latitude'),
+                    decoration: const InputDecoration(labelText: 'Latitude *'),
                   ),
                   const SizedBox(height: 20),
-                  TextField(
+                  TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Required';
+                      }
+                      return null;
+                    },
                     controller: longitudeCtrl,
-                    decoration: const InputDecoration(labelText: 'Longitude'),
+                    decoration: const InputDecoration(labelText: 'Longitude *'),
                   ),
                   const SizedBox(height: 20),
                   FloatingActionButton.extended(

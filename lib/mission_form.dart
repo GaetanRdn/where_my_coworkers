@@ -110,7 +110,7 @@ class _MissionFormPageState extends State<MissionFormPage> {
         },
         value: easymaker,
         onChanged: (val) => setState(() => easymaker = val),
-        decoration: const InputDecoration(labelText: 'Easymaker'),
+        decoration: const InputDecoration(labelText: 'Easymaker *'),
         items: items);
   }
 
@@ -134,7 +134,7 @@ class _MissionFormPageState extends State<MissionFormPage> {
         value: client,
         isExpanded: true,
         onChanged: (val) => setState(() => client = val),
-        decoration: const InputDecoration(labelText: 'Client'),
+        decoration: const InputDecoration(labelText: 'Client *'),
         items: items);
   }
 }
