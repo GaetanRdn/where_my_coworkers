@@ -35,14 +35,14 @@ class _MapState extends State<MapPage> {
             width: 16.0,
             height: 16.0,
             point: LatLng(client.latitude, client.longitude),
-            builder: (ctx) => Container(color: Colors.purple),
+            builder: (ctx) => const Icon(Icons.military_tech, color: Colors.blue),
           );
         }
         return Marker(
           width: 16.0,
           height: 16.0,
           point: LatLng(client.latitude, client.longitude),
-          builder: (ctx) => Container(color: Colors.red),
+          builder: (ctx) => const Icon(Icons.business, color: Colors.red),
         );
       }).toList();
     });
