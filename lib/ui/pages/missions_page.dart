@@ -18,7 +18,7 @@ class _MissionsPage extends State<MissionsPage> {
   final EasymakerStorage _easymakerStorage = EasymakerStorage();
   final MissionStorage _missionStorage = MissionStorage();
   final ClientStorage _clientStorage = ClientStorage();
-  Future<List<Map<String, Object>>> _missions = Future.value([]);
+  Future<List<Mission>> _missions = Future.value([]);
 
   @override
   void initState() {
@@ -33,19 +33,18 @@ class _MissionsPage extends State<MissionsPage> {
 
     setState(() {
       _missions = Future.value(missions.map((mission) {
-        return {
-          "easymaker": easymakers
-              .where((easymaker) => easymaker.id == mission.easymakerId)
-              .first,
-          "client":
-              clients.where((client) => client.id == mission.clientId).first,
-          "mission": mission,
-        };
+        mission.easymaker = easymakers
+            .where((easymaker) => easymaker.id == mission.easymakerId)
+            .first;
+
+        mission.client = clients.where((client) => client.id == mission.clientId).first;
+
+        return mission;
       }).toList());
     });
   }
 
-  Future<void> _askForConfirmation(Easymaker easymaker, Client client, Mission mission) async {
+  Future<void> _askForConfirmation(Mission mission) async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
@@ -55,7 +54,7 @@ class _MissionsPage extends State<MissionsPage> {
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('So ' + easymaker.firstName + ' leaves ' + client.name + '?'),
+                Text('So ' + mission.easymaker!.firstName + ' leaves ' + mission.client!.name + '?'),
               ],
             ),
           ),
@@ -86,19 +85,16 @@ class _MissionsPage extends State<MissionsPage> {
     );
   }
 
-  List<DataRow> getRows(List<Map<String, Object>> missions) {
+  List<DataRow> getRows(List<Mission> missions) {
     return missions.map((mission) {
-      Easymaker easymaker = mission['easymaker'] as Easymaker;
-      Client client = mission['client'] as Client;
-
       return DataRow(
         cells: <DataCell>[
-          DataCell(Text(easymaker.firstName + ' - ' + easymaker.lastName)),
-          DataCell(Text(client.name)),
+          DataCell(Text(mission.easymaker!.firstName + ' - ' + mission.easymaker!.lastName)),
+          DataCell(Text(mission.client!.name)),
           DataCell(IconButton(
             icon: const Icon(Icons.delete_forever),
             onPressed: () {
-              _askForConfirmation(easymaker, client, mission['mission'] as Mission);
+              _askForConfirmation(mission);
             },
           )),
         ],
@@ -118,7 +114,7 @@ class _MissionsPage extends State<MissionsPage> {
               child: FutureBuilder(
                   future: _missions,
                   builder: (BuildContext context,
-                      AsyncSnapshot<List<Map<String, Object>>> snapshot) {
+                      AsyncSnapshot<List<Mission>> snapshot) {
                     return DataTable(columns: const <DataColumn>[
                       DataColumn(label: Text('Easymaker')),
                       DataColumn(label: Text('Client')),
