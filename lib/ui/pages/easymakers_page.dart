@@ -1,5 +1,6 @@
 import 'package:easymakers_tracker/models/easymaker.dart';
 import 'package:easymakers_tracker/stores/mission_storage.dart';
+import 'package:easymakers_tracker/ui/cards/easymaker_card.dart';
 import 'package:easymakers_tracker/ui/forms/easymaker_form.dart';
 import 'package:flutter/material.dart';
 
@@ -73,21 +74,6 @@ class _EasymakersPage extends State<EasymakersPage> {
     Navigator.of(context).pop();
   }
 
-  // List<DataRow> getRows(List<Easymaker> easymakers) {
-  //   return easymakers.map((easymaker) {
-  //     return DataRow(
-  //       cells: <DataCell>[
-  //         DataCell(Text(easymaker.firstName)),
-  //         DataCell(Text(easymaker.lastName)),
-  //         DataCell(IconButton(
-  //           icon: const Icon(Icons.delete_forever),
-  //           onPressed: () => _askForConfirmation(easymaker),
-  //         ))
-  //       ],
-  //     );
-  //   }).toList();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -101,21 +87,12 @@ class _EasymakersPage extends State<EasymakersPage> {
             builder: (BuildContext context,
                 AsyncSnapshot<List<Easymaker>> snapshot) {
               return ListView(
-                  children: (snapshot.data ?? <Easymaker>[]).map((easymaker) {
-                    return Card(
-                    elevation: 4,
-                    child: ListTile(
-                      leading: const CircleAvatar(
-                          child: Icon(Icons.account_circle)),
-                      title: Text(
-                          easymaker.firstName + ' ' + easymaker.lastName),
-                      trailing: IconButton(
-                        icon: const Icon(Icons.delete_forever),
-                        onPressed: () => _askForConfirmation(easymaker),
-                      ),
-                    ),
+                children: (snapshot.data ?? <Easymaker>[]).map((easymaker) {
+                  return EasymakerCard(
+                    easymaker: easymaker,
+                    onRemove: () => _askForConfirmation(easymaker),
                   );
-                  }).toList(),
+                }).toList(),
               );
             },
           ),
