@@ -21,4 +21,8 @@ class EasymakerStorage {
       return Future.value(<Easymaker>[]);
     });
   }
+
+  Future remove(String id) {
+    return _db.collection('easymakers').doc(id).delete();
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:easymakers_tracker/easymaker.dart';
 import 'package:easymakers_tracker/easymaker_form.dart';
 import 'package:easymakers_tracker/easymaker_storage.dart';
+import 'package:easymakers_tracker/mission_storage.dart';
 import 'package:flutter/material.dart';
 
 class EasymakersPage extends StatefulWidget {
@@ -11,7 +12,8 @@ class EasymakersPage extends StatefulWidget {
 }
 
 class _EasymakersPage extends State<EasymakersPage> {
-  final EasymakerStorage storage = EasymakerStorage();
+  final EasymakerStorage _storage = EasymakerStorage();
+  final MissionStorage _missionStorage = MissionStorage();
   Future<List<Easymaker>> _easymakers = Future.value([]);
 
   @override
@@ -22,8 +24,51 @@ class _EasymakersPage extends State<EasymakersPage> {
 
   void loadEasymakers() {
     setState(() {
-      _easymakers = storage.getAll();
+      _easymakers = _storage.getAll();
     });
+  }
+
+  Future<void> _askForConfirmation(Easymaker easymaker) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Please, confirm that'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('So ' + easymaker.firstName + ' leaves us?'),
+                const Text('This will also remove all his missions!'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              style: ButtonStyle(foregroundColor: MaterialStateProperty.all(Colors.red)),
+              child: const Text('Confirm'),
+              onPressed: () {
+                _missionStorage.removeByEasymakerId(easymaker.id);
+                _storage.remove(easymaker.id).then((value) => loadEasymakers());
+                const snackBar = SnackBar(
+                  content: Text('Removed!'),
+                  backgroundColor: Colors.green,
+                );
+
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   List<DataRow> getRows(List<Easymaker> easymakers) {
@@ -32,6 +77,12 @@ class _EasymakersPage extends State<EasymakersPage> {
         cells: <DataCell>[
           DataCell(Text(e.firstName)),
           DataCell(Text(e.lastName)),
+          DataCell(IconButton(
+            icon: const Icon(Icons.delete_forever),
+            onPressed: () {
+              _askForConfirmation(e);
+            },
+          ))
         ],
       );
     }).toList();
@@ -52,7 +103,8 @@ class _EasymakersPage extends State<EasymakersPage> {
                       AsyncSnapshot<List<Easymaker>> snapshot) {
                     return DataTable(columns: const <DataColumn>[
                       DataColumn(label: Text('First name')),
-                      DataColumn(label: Text('Last name'))
+                      DataColumn(label: Text('Last name')),
+                      DataColumn(label: Text(''))
                     ], rows: getRows(snapshot.data ?? []));
                   })),
           Padding(
