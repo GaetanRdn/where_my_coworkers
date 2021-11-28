@@ -73,55 +73,67 @@ class _EasymakersPage extends State<EasymakersPage> {
     Navigator.of(context).pop();
   }
 
-  List<DataRow> getRows(List<Easymaker> easymakers) {
-    return easymakers.map((easymaker) {
-      return DataRow(
-        cells: <DataCell>[
-          DataCell(Text(easymaker.firstName)),
-          DataCell(Text(easymaker.lastName)),
-          DataCell(IconButton(
-            icon: const Icon(Icons.delete_forever),
-            onPressed: () => _askForConfirmation(easymaker),
-          ))
-        ],
-      );
-    }).toList();
-  }
+  // List<DataRow> getRows(List<Easymaker> easymakers) {
+  //   return easymakers.map((easymaker) {
+  //     return DataRow(
+  //       cells: <DataCell>[
+  //         DataCell(Text(easymaker.firstName)),
+  //         DataCell(Text(easymaker.lastName)),
+  //         DataCell(IconButton(
+  //           icon: const Icon(Icons.delete_forever),
+  //           onPressed: () => _askForConfirmation(easymaker),
+  //         ))
+  //       ],
+  //     );
+  //   }).toList();
+  // }
 
   @override
   Widget build(BuildContext context) {
-    return ListView(children: [
-      Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Padding(
-              padding: const EdgeInsets.all(16),
-              child: FutureBuilder(
-                  future: _easymakers,
-                  builder: (BuildContext context,
-                      AsyncSnapshot<List<Easymaker>> snapshot) {
-                    return DataTable(columns: const <DataColumn>[
-                      DataColumn(label: Text('First name')),
-                      DataColumn(label: Text('Last name')),
-                      DataColumn(label: Text(''))
-                    ], rows: getRows(snapshot.data ?? []));
-                  })),
-          Padding(
-              padding: const EdgeInsets.all(16),
-              child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: FloatingActionButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => EasymakerFormPage()),
-                        ).then((value) => loadEasymakers());
-                      },
-                      child: const Icon(Icons.add)))),
-        ],
-      )
-    ]);
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Expanded(
+          child: FutureBuilder(
+            future: _easymakers,
+            initialData: const <Easymaker>[],
+            builder: (BuildContext context,
+                AsyncSnapshot<List<Easymaker>> snapshot) {
+              return ListView(
+                  children: (snapshot.data ?? <Easymaker>[]).map((easymaker) {
+                    return Card(
+                    elevation: 4,
+                    child: ListTile(
+                      leading: const CircleAvatar(
+                          child: Icon(Icons.account_circle)),
+                      title: Text(
+                          easymaker.firstName + ' ' + easymaker.lastName),
+                      trailing: IconButton(
+                        icon: const Icon(Icons.delete_forever),
+                        onPressed: () => _askForConfirmation(easymaker),
+                      ),
+                    ),
+                  );
+                  }).toList(),
+              );
+            },
+          ),
+        ),
+        Padding(
+            padding: const EdgeInsets.all(16),
+            child: Align(
+                alignment: Alignment.bottomRight,
+                child: FloatingActionButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => EasymakerFormPage()),
+                      ).then((value) => loadEasymakers());
+                    },
+                    child: const Icon(Icons.add)))),
+      ],
+    );
   }
 }

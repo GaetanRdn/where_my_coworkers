@@ -16,7 +16,7 @@ void main() {
     expect(find.byWidget(page), findsOneWidget);
     expect(
         find.byWidgetPredicate((Widget widget) =>
-            widget is DataTable),
+            widget is ListView),
         findsOneWidget);
     expect(
         find.widgetWithIcon(FloatingActionButton, Icons.add), findsOneWidget);
