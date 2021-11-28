@@ -1,4 +1,4 @@
-import 'package:easymakers_tracker/mission.dart';
+import 'package:easymakers_tracker/models/mission.dart';
 import 'package:localstore/localstore.dart';
 
 class MissionStorage {

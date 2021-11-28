@@ -1,4 +1,4 @@
-import 'package:easymakers_tracker/client.dart';
+import 'package:easymakers_tracker/models/client.dart';
 import 'package:localstore/localstore.dart';
 
 

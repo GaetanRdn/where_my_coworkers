@@ -1,10 +1,10 @@
-import 'package:easymakers_tracker/client.dart';
-import 'package:easymakers_tracker/client_storage.dart';
-import 'package:easymakers_tracker/easymaker.dart';
-import 'package:easymakers_tracker/easymaker_storage.dart';
-import 'package:easymakers_tracker/mission.dart';
-import 'package:easymakers_tracker/mission_form.dart';
-import 'package:easymakers_tracker/mission_storage.dart';
+import 'package:easymakers_tracker/models/client.dart';
+import 'package:easymakers_tracker/stores/client_storage.dart';
+import 'package:easymakers_tracker/models/easymaker.dart';
+import 'package:easymakers_tracker/stores/easymaker_storage.dart';
+import 'package:easymakers_tracker/models/mission.dart';
+import 'package:easymakers_tracker/ui/forms/mission_form.dart';
+import 'package:easymakers_tracker/stores/mission_storage.dart';
 import 'package:flutter/material.dart';
 
 class MissionsPage extends StatefulWidget {

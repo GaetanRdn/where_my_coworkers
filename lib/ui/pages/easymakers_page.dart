@@ -1,7 +1,7 @@
-import 'package:easymakers_tracker/easymaker.dart';
-import 'package:easymakers_tracker/easymaker_form.dart';
-import 'package:easymakers_tracker/easymaker_storage.dart';
-import 'package:easymakers_tracker/mission_storage.dart';
+import 'package:easymakers_tracker/models/easymaker.dart';
+import 'package:easymakers_tracker/ui/forms/easymaker_form.dart';
+import '../../stores/easymaker_storage.dart';
+import 'package:easymakers_tracker/stores/mission_storage.dart';
 import 'package:flutter/material.dart';
 
 class EasymakersPage extends StatefulWidget {

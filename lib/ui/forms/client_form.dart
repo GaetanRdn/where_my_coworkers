@@ -1,5 +1,5 @@
 
-import 'package:easymakers_tracker/client_storage.dart';
+import '../../stores/client_storage.dart';
 import 'package:flutter/material.dart';
 
 class ClientFormPage extends StatefulWidget {

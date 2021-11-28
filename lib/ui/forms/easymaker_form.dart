@@ -1,4 +1,4 @@
-import 'package:easymakers_tracker/easymaker_storage.dart';
+import 'package:easymakers_tracker/stores/easymaker_storage.dart';
 import 'package:flutter/material.dart';
 
 class EasymakerFormPage extends StatefulWidget {

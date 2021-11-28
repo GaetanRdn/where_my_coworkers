@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:easymakers_tracker/easymaker.dart';
+import 'package:easymakers_tracker/models/easymaker.dart';
 import 'package:localstore/localstore.dart';
 
 class EasymakerStorage {

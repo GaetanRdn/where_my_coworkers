@@ -1,4 +1,4 @@
-import 'package:easymakers_tracker/easymaker_form.dart';
+import 'package:easymakers_tracker/ui/forms/easymaker_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
