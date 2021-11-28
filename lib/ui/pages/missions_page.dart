@@ -3,6 +3,7 @@ import 'package:easymakers_tracker/stores/client_storage.dart';
 import 'package:easymakers_tracker/models/easymaker.dart';
 import 'package:easymakers_tracker/stores/easymaker_storage.dart';
 import 'package:easymakers_tracker/models/mission.dart';
+import 'package:easymakers_tracker/ui/cards/mission_card.dart';
 import 'package:easymakers_tracker/ui/forms/mission_form.dart';
 import 'package:easymakers_tracker/stores/mission_storage.dart';
 import 'package:flutter/material.dart';
@@ -104,23 +105,23 @@ class _MissionsPage extends State<MissionsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(children: [
-      Column(
+    return Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Padding(
-              padding: const EdgeInsets.all(16),
+          Expanded(
               child: FutureBuilder(
                   future: _missions,
                   builder: (BuildContext context,
                       AsyncSnapshot<List<Mission>> snapshot) {
-                    return DataTable(columns: const <DataColumn>[
-                      DataColumn(label: Text('Easymaker')),
-                      DataColumn(label: Text('Client')),
-                      DataColumn(label: Text('')),
-                    ], rows: getRows(snapshot.data ?? []));
-                  })),
+                    return ListView(
+                      children: (snapshot.data ?? <Mission>[]).map((mission) {
+                        return MissionCard(mission: mission, onRemove: () => _askForConfirmation(mission));
+                      }).toList(),
+                    );
+                  },
+              ),
+          ),
           Padding(
               padding: const EdgeInsets.all(16),
               child: Align(
@@ -136,6 +137,6 @@ class _MissionsPage extends State<MissionsPage> {
                       child: const Icon(Icons.add)))),
         ],
       )
-    ]);
+    ;
   }
 }
