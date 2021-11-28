@@ -18,7 +18,7 @@ class _EasymakerFormPageState extends State<EasymakerFormPage> {
   void _createEasymaker() {
     if (_formKey.currentState!.validate()) {
       widget.storage
-          .writeEasymaker(lastNameCtrl.value.text, firstNameCtrl.value.text)
+          .writeEasymaker(lastNameCtrl.value.text.trim(), firstNameCtrl.value.text.trim())
           .whenComplete(() {
         const snackBar = SnackBar(
           content: Text('Created!'),
