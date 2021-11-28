@@ -1,7 +1,7 @@
-import 'package:easymakers_tracker/clients_page.dart';
-import 'package:easymakers_tracker/easymakers_page.dart';
-import 'package:easymakers_tracker/map_page.dart';
-import 'package:easymakers_tracker/missions_page.dart';
+import 'package:easymakers_tracker/ui/pages/clients_page.dart';
+import 'package:easymakers_tracker/ui/pages/easymakers_page.dart';
+import 'package:easymakers_tracker/ui/pages/map_page.dart';
+import 'package:easymakers_tracker/ui/pages/missions_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

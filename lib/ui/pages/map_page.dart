@@ -1,7 +1,7 @@
-import 'package:easymakers_tracker/client.dart';
-import 'package:easymakers_tracker/client_storage.dart';
-import 'package:easymakers_tracker/mission.dart';
-import 'package:easymakers_tracker/mission_storage.dart';
+import 'package:easymakers_tracker/models/client.dart';
+import 'package:easymakers_tracker/stores/client_storage.dart';
+import 'package:easymakers_tracker/models/mission.dart';
+import 'package:easymakers_tracker/stores/mission_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
