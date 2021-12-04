@@ -25,4 +25,8 @@ class CoWorkerStorage {
   Future remove(String id) {
     return _db.collection('coworkers').doc(id).delete();
   }
+
+  Future update(CoWorker coWorker) {
+    return _db.collection('coworkers').doc(coWorker.id).set(coWorker.toJson());
+  }
 }

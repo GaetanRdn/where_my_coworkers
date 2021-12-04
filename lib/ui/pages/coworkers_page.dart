@@ -9,10 +9,10 @@ class CoWorkersPage extends StatefulWidget {
   const CoWorkersPage({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _CoWorkersPage();
+  State<StatefulWidget> createState() => CoWorkersPageState();
 }
 
-class _CoWorkersPage extends State<CoWorkersPage> {
+class CoWorkersPageState extends State<CoWorkersPage> {
   final CoWorkerStorage _storage = CoWorkerStorage();
   final MissionStorage _missionStorage = MissionStorage();
   Future<List<CoWorker>> _coWorkers = Future.value([]);

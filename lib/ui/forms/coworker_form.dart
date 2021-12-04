@@ -1,10 +1,12 @@
+import 'package:where_my_coworkers/models/coworker.dart';
 import 'package:where_my_coworkers/stores/coworker_storage.dart';
 import 'package:flutter/material.dart';
 
 class CoWorkerFormPage extends StatefulWidget {
-  CoWorkerFormPage({Key? key}) : super(key: key);
+  CoWorkerFormPage({Key? key, this.coWorker}) : super(key: key);
 
   final CoWorkerStorage storage = CoWorkerStorage();
+  final CoWorker? coWorker;
 
   @override
   State<CoWorkerFormPage> createState() => _CoWorkerFormPageState();
@@ -15,13 +17,37 @@ class _CoWorkerFormPageState extends State<CoWorkerFormPage> {
   final lastNameCtrl = TextEditingController();
   final firstNameCtrl = TextEditingController();
 
+  @override
+  void initState() {
+    super.initState();
+    lastNameCtrl.text = widget.coWorker?.lastName ?? '';
+    firstNameCtrl.text = widget.coWorker?.firstName ?? '';
+  }
+
   void _create() {
     if (_formKey.currentState!.validate()) {
       widget.storage
           .writeCoWorker(lastNameCtrl.value.text.trim(), firstNameCtrl.value.text.trim())
           .whenComplete(() {
-        const snackBar = SnackBar(
-          content: Text('Created!'),
+        var snackBar = SnackBar(
+          content: (widget.coWorker == null) ? const Text('Created!') : const Text('Saved!'),
+          backgroundColor: Colors.green,
+        );
+
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+        Navigator.pop(context);
+      });
+    }
+  }
+
+  void _update() {
+    if (_formKey.currentState!.validate()) {
+      widget.storage
+          .update(CoWorker(lastNameCtrl.value.text.trim(), firstNameCtrl.value.text.trim(), widget.coWorker!.id))
+          .whenComplete(() {
+        var snackBar = SnackBar(
+          content: (widget.coWorker == null) ? const Text('Created!') : const Text('Saved!'),
           backgroundColor: Colors.green,
         );
 
@@ -36,7 +62,7 @@ class _CoWorkerFormPageState extends State<CoWorkerFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('New co-worker'),
+        title: (widget.coWorker == null) ? const Text('New co-worker') : const Text('Update co-worker'),
       ),
       body: Center(
         child: Padding(
@@ -70,10 +96,9 @@ class _CoWorkerFormPageState extends State<CoWorkerFormPage> {
                   },
                 ),
                 const SizedBox(height: 20),
-                FloatingActionButton.extended(
-                  onPressed: _create,
-                  label: const Text('Create'),
-                  icon: const Icon(Icons.add),
+                FloatingActionButton(
+                  onPressed: (widget.coWorker == null) ? _create : _update,
+                  child: (widget.coWorker == null) ? const Icon(Icons.add) : const Icon(Icons.save),
                 )
               ],
             ),
