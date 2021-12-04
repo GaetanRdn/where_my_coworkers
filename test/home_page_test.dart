@@ -11,7 +11,7 @@ void main() {
     ));
 
     // THEN
-    expect(find.widgetWithText(AppBar, 'Home'), findsOneWidget);
+    expect(find.widgetWithText(AppBar, 'Where my Co-workers'), findsOneWidget);
     expect(
         find.byWidgetPredicate((widget) => widget is PageView), findsOneWidget);
     expect(find.byWidgetPredicate((widget) => widget is CoWorkersPage),

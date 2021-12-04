@@ -1,3 +1,4 @@
+import 'package:google_fonts/google_fonts.dart';
 import 'package:where_my_coworkers/ui/pages/clients_page.dart';
 import 'package:where_my_coworkers/ui/pages/coworkers_page.dart';
 import 'package:where_my_coworkers/ui/pages/map_page.dart';
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: Text('Where my Co-workers', style: GoogleFonts.lobster()),
       ),
       body: PageView(
         physics: const ClampingScrollPhysics(),
