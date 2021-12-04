@@ -8,10 +8,10 @@ class ClientsPage extends StatefulWidget {
   const ClientsPage({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _CoWorkersPage();
+  State<StatefulWidget> createState() => ClientsPageState();
 }
 
-class _CoWorkersPage extends State<ClientsPage> {
+class ClientsPageState extends State<ClientsPage> {
   final ClientStorage storage = ClientStorage();
   Future<List<Client>> _clients = Future.value([]);
 

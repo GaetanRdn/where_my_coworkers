@@ -23,4 +23,8 @@ class ClientStorage {
       return Future.value([]);
     });
   }
+
+  Future update(Client client) {
+    return _db.collection('clients').doc(client.id).set(client.toJson());
+  }
 }
