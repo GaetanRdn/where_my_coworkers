@@ -1,4 +1,4 @@
-package com.grog.easymakers_tracker
+package com.grog.where_my_coworkers
 
 import io.flutter.embedding.android.FlutterActivity
 

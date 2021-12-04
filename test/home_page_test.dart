@@ -1,5 +1,5 @@
-import 'package:easymakers_tracker/ui/pages/easymakers_page.dart';
-import 'package:easymakers_tracker/ui/pages/home_page.dart';
+import 'package:where_my_coworkers/ui/pages/coworkers_page.dart';
+import 'package:where_my_coworkers/ui/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -14,7 +14,7 @@ void main() {
     expect(find.widgetWithText(AppBar, 'Home'), findsOneWidget);
     expect(
         find.byWidgetPredicate((widget) => widget is PageView), findsOneWidget);
-    expect(find.byWidgetPredicate((widget) => widget is EasymakersPage),
+    expect(find.byWidgetPredicate((widget) => widget is CoWorkersPage),
         findsOneWidget);
 
     expect(find.byWidgetPredicate((widget) => widget is BottomNavigationBar),

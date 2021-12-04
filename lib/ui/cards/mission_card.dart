@@ -1,4 +1,4 @@
-import 'package:easymakers_tracker/models/mission.dart';
+import 'package:where_my_coworkers/models/mission.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,9 +15,9 @@ class MissionCard extends StatelessWidget {
       elevation: 4,
       child: ListTile(
         leading: const CircleAvatar(child: Icon(Icons.military_tech)),
-        title: Text((mission.easymaker?.firstName ?? '') +
+        title: Text((mission.coWorker?.firstName ?? '') +
             ' ' +
-            (mission.easymaker?.lastName ?? '')),
+            (mission.coWorker?.lastName ?? '')),
         subtitle: Text(mission.client?.name ?? ''),
         trailing: IconButton(
           icon: const Icon(Icons.delete_forever),

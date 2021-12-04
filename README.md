@@ -1,12 +1,12 @@
-[![Tests](https://github.com/GaetanRdn/easymakers_tracker/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/GaetanRdn/easymakers_tracker/actions/workflows/flutter.yml)
+[![Flutter](https://github.com/GaetanRdn/where_my_coworkers/actions/workflows/flutter.yml/badge.svg)](https://github.com/GaetanRdn/where_my_coworkers/actions/workflows/flutter.yml)
 
-[![Publish to GitHub Pages](https://github.com/GaetanRdn/easymakers_tracker/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/GaetanRdn/easymakers_tracker/actions/workflows/gh-pages.yml)
+[![Publish to GitHub Pages](https://github.com/GaetanRdn/where_my_coworkers/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/GaetanRdn/where_my_coworkers/actions/workflows/gh-pages.yml)
 
-# easymakers_tracker
+# where_my_coworkers
 
-Allow to get information about easymakers and their missions
+It allows to get / store information about our co-workers and their missions.
 
-Web app is accessible [here](https://gaetanrdn.github.io/easymakers_tracker/#/)
+Web app is accessible [here](https://gaetanrdn.github.io/where_my_coworkers/)
 
 ## Getting Started
 

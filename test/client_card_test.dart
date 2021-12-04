@@ -1,5 +1,5 @@
-import 'package:easymakers_tracker/models/client.dart';
-import 'package:easymakers_tracker/ui/cards/client_card.dart';
+import 'package:where_my_coworkers/models/client.dart';
+import 'package:where_my_coworkers/ui/cards/client_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

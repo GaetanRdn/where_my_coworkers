@@ -1,4 +1,4 @@
-import 'package:easymakers_tracker/ui/pages/clients_page.dart';
+import 'package:where_my_coworkers/ui/pages/clients_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

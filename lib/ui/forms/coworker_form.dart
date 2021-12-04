@@ -1,24 +1,24 @@
-import 'package:easymakers_tracker/stores/easymaker_storage.dart';
+import 'package:where_my_coworkers/stores/coworker_storage.dart';
 import 'package:flutter/material.dart';
 
-class EasymakerFormPage extends StatefulWidget {
-  EasymakerFormPage({Key? key}) : super(key: key);
+class CoWorkerFormPage extends StatefulWidget {
+  CoWorkerFormPage({Key? key}) : super(key: key);
 
-  final EasymakerStorage storage = EasymakerStorage();
+  final CoWorkerStorage storage = CoWorkerStorage();
 
   @override
-  State<EasymakerFormPage> createState() => _EasymakerFormPageState();
+  State<CoWorkerFormPage> createState() => _CoWorkerFormPageState();
 }
 
-class _EasymakerFormPageState extends State<EasymakerFormPage> {
+class _CoWorkerFormPageState extends State<CoWorkerFormPage> {
   final _formKey = GlobalKey<FormState>();
   final lastNameCtrl = TextEditingController();
   final firstNameCtrl = TextEditingController();
 
-  void _createEasymaker() {
+  void _create() {
     if (_formKey.currentState!.validate()) {
       widget.storage
-          .writeEasymaker(lastNameCtrl.value.text.trim(), firstNameCtrl.value.text.trim())
+          .writeCoWorker(lastNameCtrl.value.text.trim(), firstNameCtrl.value.text.trim())
           .whenComplete(() {
         const snackBar = SnackBar(
           content: Text('Created!'),
@@ -36,7 +36,7 @@ class _EasymakerFormPageState extends State<EasymakerFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('New Easymaker'),
+        title: const Text('New co-worker'),
       ),
       body: Center(
         child: Padding(
@@ -71,7 +71,7 @@ class _EasymakerFormPageState extends State<EasymakerFormPage> {
                 ),
                 const SizedBox(height: 20),
                 FloatingActionButton.extended(
-                  onPressed: _createEasymaker,
+                  onPressed: _create,
                   label: const Text('Create'),
                   icon: const Icon(Icons.add),
                 )

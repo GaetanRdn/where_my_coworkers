@@ -1,11 +1,11 @@
-import 'package:easymakers_tracker/models/easymaker.dart';
+import 'package:where_my_coworkers/models/coworker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class EasymakerCard extends StatelessWidget {
-  const EasymakerCard({Key? key, required this.easymaker, required this.onRemove}) : super(key: key);
+class CoWorkerCard extends StatelessWidget {
+  const CoWorkerCard({Key? key, required this.coWorker, required this.onRemove}) : super(key: key);
 
-  final Easymaker easymaker;
+  final CoWorker coWorker;
   final VoidCallback onRemove;
 
   @override
@@ -16,7 +16,7 @@ class EasymakerCard extends StatelessWidget {
         leading: const CircleAvatar(
             child: Icon(Icons.account_circle)),
         title: Text(
-            easymaker.firstName + ' ' + easymaker.lastName),
+            coWorker.firstName + ' ' + coWorker.lastName),
         trailing: IconButton(
           icon: const Icon(Icons.delete_forever),
           onPressed: onRemove,

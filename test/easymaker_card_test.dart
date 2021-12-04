@@ -1,12 +1,12 @@
-import 'package:easymakers_tracker/models/easymaker.dart';
-import 'package:easymakers_tracker/ui/cards/easymaker_card.dart';
+import 'package:where_my_coworkers/models/coworker.dart';
+import 'package:where_my_coworkers/ui/cards/coworker_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Check widgets', (WidgetTester tester) async {
     // GIVEN
-    EasymakerCard card = EasymakerCard(easymaker: Easymaker('Redin', 'Gaetan', '123'), onRemove: () => {},);
+    CoWorkerCard card = CoWorkerCard(coWorker: CoWorker('Redin', 'Gaetan', '123'), onRemove: () => {},);
 
     // WHEN
     await tester.pumpWidget(MaterialApp(

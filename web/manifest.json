@@ -1,11 +1,11 @@
 {
-    "name": "easymakers_tracker",
-    "short_name": "easymakers_tracker",
+    "name": "where_my_coworkers",
+    "short_name": "where_my_coworkers",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Allow to get information about easymakers and their missions",
+    "description": "Allow to get / store information about our co-workers and their missions",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

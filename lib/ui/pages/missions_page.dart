@@ -1,11 +1,11 @@
-import 'package:easymakers_tracker/models/client.dart';
-import 'package:easymakers_tracker/stores/client_storage.dart';
-import 'package:easymakers_tracker/models/easymaker.dart';
-import 'package:easymakers_tracker/stores/easymaker_storage.dart';
-import 'package:easymakers_tracker/models/mission.dart';
-import 'package:easymakers_tracker/ui/cards/mission_card.dart';
-import 'package:easymakers_tracker/ui/forms/mission_form.dart';
-import 'package:easymakers_tracker/stores/mission_storage.dart';
+import 'package:where_my_coworkers/models/client.dart';
+import 'package:where_my_coworkers/stores/client_storage.dart';
+import 'package:where_my_coworkers/models/coworker.dart';
+import 'package:where_my_coworkers/stores/coworker_storage.dart';
+import 'package:where_my_coworkers/models/mission.dart';
+import 'package:where_my_coworkers/ui/cards/mission_card.dart';
+import 'package:where_my_coworkers/ui/forms/mission_form.dart';
+import 'package:where_my_coworkers/stores/mission_storage.dart';
 import 'package:flutter/material.dart';
 
 class MissionsPage extends StatefulWidget {
@@ -16,7 +16,7 @@ class MissionsPage extends StatefulWidget {
 }
 
 class _MissionsPage extends State<MissionsPage> {
-  final EasymakerStorage _easymakerStorage = EasymakerStorage();
+  final CoWorkerStorage _coWorkerStorage = CoWorkerStorage();
   final MissionStorage _missionStorage = MissionStorage();
   final ClientStorage _clientStorage = ClientStorage();
   Future<List<Mission>> _missions = Future.value([]);
@@ -28,14 +28,14 @@ class _MissionsPage extends State<MissionsPage> {
   }
 
   Future<void> load() async {
-    List<Easymaker> easymakers = await _easymakerStorage.getAll();
+    List<CoWorker> coWorkers = await _coWorkerStorage.getAll();
     List<Mission> missions = await _missionStorage.getAll();
     List<Client> clients = await _clientStorage.getAll();
 
     setState(() {
       _missions = Future.value(missions.map((mission) {
-        mission.easymaker = easymakers
-            .where((easymaker) => easymaker.id == mission.easymakerId)
+        mission.coWorker = coWorkers
+            .where((coWorker) => coWorker.id == mission.coWorkerId)
             .first;
 
         mission.client = clients.where((client) => client.id == mission.clientId).first;
@@ -55,7 +55,7 @@ class _MissionsPage extends State<MissionsPage> {
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('So ' + mission.easymaker!.firstName + ' leaves ' + mission.client!.name + '?'),
+                Text('So ' + mission.coWorker!.firstName + ' leaves ' + mission.client!.name + '?'),
               ],
             ),
           ),
@@ -90,7 +90,7 @@ class _MissionsPage extends State<MissionsPage> {
     return missions.map((mission) {
       return DataRow(
         cells: <DataCell>[
-          DataCell(Text(mission.easymaker!.firstName + ' - ' + mission.easymaker!.lastName)),
+          DataCell(Text(mission.coWorker!.firstName + ' - ' + mission.coWorker!.lastName)),
           DataCell(Text(mission.client!.name)),
           DataCell(IconButton(
             icon: const Icon(Icons.delete_forever),

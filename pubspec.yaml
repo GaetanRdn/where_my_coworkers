@@ -1,5 +1,5 @@
-name: easymakers_tracker
-description: Allow to get information about easymakers and their missions
+name: where_my_coworkers
+description: Allow to get / store information about our co-workers and their missions
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.

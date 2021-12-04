@@ -1,17 +1,17 @@
-import 'package:easymakers_tracker/models/client.dart';
-import 'package:easymakers_tracker/stores/client_storage.dart';
-import 'package:easymakers_tracker/ui/cards/client_card.dart';
-import 'package:easymakers_tracker/ui/forms/client_form.dart';
+import 'package:where_my_coworkers/models/client.dart';
+import 'package:where_my_coworkers/stores/client_storage.dart';
+import 'package:where_my_coworkers/ui/cards/client_card.dart';
+import 'package:where_my_coworkers/ui/forms/client_form.dart';
 import 'package:flutter/material.dart';
 
 class ClientsPage extends StatefulWidget {
   const ClientsPage({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _EasymakersPage();
+  State<StatefulWidget> createState() => _CoWorkersPage();
 }
 
-class _EasymakersPage extends State<ClientsPage> {
+class _CoWorkersPage extends State<ClientsPage> {
   final ClientStorage storage = ClientStorage();
   Future<List<Client>> _clients = Future.value([]);
 

@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:easymakers_tracker/models/client.dart';
-import 'package:easymakers_tracker/stores/client_storage.dart';
-import 'package:easymakers_tracker/models/easymaker.dart';
-import 'package:easymakers_tracker/stores/easymaker_storage.dart';
-import 'package:easymakers_tracker/stores/mission_storage.dart';
+import 'package:where_my_coworkers/models/client.dart';
+import 'package:where_my_coworkers/stores/client_storage.dart';
+import 'package:where_my_coworkers/models/coworker.dart';
+import 'package:where_my_coworkers/stores/coworker_storage.dart';
+import 'package:where_my_coworkers/stores/mission_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +12,7 @@ class MissionFormPage extends StatefulWidget {
   MissionFormPage({Key? key}) : super(key: key);
 
   final MissionStorage missionStorage = MissionStorage();
-  final EasymakerStorage easymakerStorage = EasymakerStorage();
+  final CoWorkerStorage coworkerStorage = CoWorkerStorage();
   final ClientStorage clientStorage = ClientStorage();
 
   @override
@@ -21,11 +21,11 @@ class MissionFormPage extends StatefulWidget {
 
 class _MissionFormPageState extends State<MissionFormPage> {
   final _formKey = GlobalKey<FormState>();
-  Easymaker? easymaker;
+  CoWorker? coWorker;
   Client? client;
 
-  Future<List<Easymaker>> loadEasymakers() {
-    return widget.easymakerStorage.getAll();
+  Future<List<CoWorker>> loadCoWorkers() {
+    return widget.coworkerStorage.getAll();
   }
 
   Future<List<Client>> loadClients() {
@@ -34,7 +34,7 @@ class _MissionFormPageState extends State<MissionFormPage> {
 
   void _create() {
     if (_formKey.currentState!.validate()) {
-      widget.missionStorage.write(easymaker!.id, client!.id).whenComplete(() {
+      widget.missionStorage.write(coWorker!.id, client!.id).whenComplete(() {
         const snackBar = SnackBar(
           content: Text('Created!'),
           backgroundColor: Colors.green,
@@ -64,10 +64,10 @@ class _MissionFormPageState extends State<MissionFormPage> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: <Widget>[
                   FutureBuilder(
-                      future: loadEasymakers(),
+                      future: loadCoWorkers(),
                       builder: (BuildContext context,
-                          AsyncSnapshot<List<Easymaker>> snapshot) {
-                        return easymakerDropdown(context, snapshot);
+                          AsyncSnapshot<List<CoWorker>> snapshot) {
+                        return coWorkerDropdown(context, snapshot);
                       }),
                   const SizedBox(height: 20),
                   FutureBuilder(
@@ -91,26 +91,26 @@ class _MissionFormPageState extends State<MissionFormPage> {
     );
   }
 
-  DropdownButtonFormField<Easymaker> easymakerDropdown(
-      BuildContext context, AsyncSnapshot<List<Easymaker>> snapshot) {
-    List<DropdownMenuItem<Easymaker>> items = snapshot.data
-            ?.map((e) => DropdownMenuItem<Easymaker>(
+  DropdownButtonFormField<CoWorker> coWorkerDropdown(
+      BuildContext context, AsyncSnapshot<List<CoWorker>> snapshot) {
+    List<DropdownMenuItem<CoWorker>> items = snapshot.data
+            ?.map((e) => DropdownMenuItem<CoWorker>(
                   child: Text(e.firstName + ' - ' + e.lastName),
                   value: e,
                 ))
             .toList() ??
         [];
 
-    return DropdownButtonFormField<Easymaker>(
+    return DropdownButtonFormField<CoWorker>(
         validator: (value) {
           if (value == null) {
             return 'Required';
           }
           return null;
         },
-        value: easymaker,
-        onChanged: (val) => setState(() => easymaker = val),
-        decoration: const InputDecoration(labelText: 'Easymaker *'),
+        value: coWorker,
+        onChanged: (val) => setState(() => coWorker = val),
+        decoration: const InputDecoration(labelText: 'Co-worker *'),
         items: items);
   }
 

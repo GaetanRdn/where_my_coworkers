@@ -1,7 +1,7 @@
-import 'package:easymakers_tracker/models/client.dart';
-import 'package:easymakers_tracker/models/easymaker.dart';
-import 'package:easymakers_tracker/models/mission.dart';
-import 'package:easymakers_tracker/ui/cards/mission_card.dart';
+import 'package:where_my_coworkers/models/client.dart';
+import 'package:where_my_coworkers/models/coworker.dart';
+import 'package:where_my_coworkers/models/mission.dart';
+import 'package:where_my_coworkers/ui/cards/mission_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -9,7 +9,7 @@ void main() {
   testWidgets('Check widgets', (WidgetTester tester) async {
     // GIVEN
     var mission = Mission('123', '456', '789');
-    mission.easymaker = Easymaker('Redin', 'Gaetan', '123');
+    mission.coWorker = CoWorker('Redin', 'Gaetan', '123');
     mission.client = Client('R&Co', 1.234, 4.567, '345');
     MissionCard card = MissionCard(mission: mission, onRemove: () => {},);
 
