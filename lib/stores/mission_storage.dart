@@ -1,15 +1,15 @@
-import 'package:easymakers_tracker/models/mission.dart';
+import 'package:where_my_coworkers/models/mission.dart';
 import 'package:localstore/localstore.dart';
 
 class MissionStorage {
   final Localstore _db = Localstore.instance;
 
-  Future<void> write(String easymakerId, String clientId) async {
+  Future<void> write(String coWorkerId, String clientId) async {
     final id = _db.collection('missions').doc().id;
     _db
         .collection('missions')
         .doc(id)
-        .set(Mission(easymakerId, clientId, id).toJson());
+        .set(Mission(coWorkerId, clientId, id).toJson());
     return Future.value();
   }
 
@@ -28,9 +28,9 @@ class MissionStorage {
     return _db.collection('missions').doc(id).delete();
   }
 
-  Future removeByEasymakerId(String id) {
+  Future removeByCoWorkerId(String id) {
     return getAll().then((List<Mission> missions) {
-      missions.where((mission) => mission.easymakerId == id).forEach((mission) {
+      missions.where((mission) => mission.coWorkerId == id).forEach((mission) {
         _db.collection('missions').doc(mission.id).delete();
       });
     });

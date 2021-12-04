@@ -1,7 +1,7 @@
-import 'package:easymakers_tracker/ui/pages/clients_page.dart';
-import 'package:easymakers_tracker/ui/pages/easymakers_page.dart';
-import 'package:easymakers_tracker/ui/pages/map_page.dart';
-import 'package:easymakers_tracker/ui/pages/missions_page.dart';
+import 'package:where_my_coworkers/ui/pages/clients_page.dart';
+import 'package:where_my_coworkers/ui/pages/coworkers_page.dart';
+import 'package:where_my_coworkers/ui/pages/map_page.dart';
+import 'package:where_my_coworkers/ui/pages/missions_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
         },
         controller: _pageController,
         children: const [
-          EasymakersPage(),
+          CoWorkersPage(),
           ClientsPage(),
           MissionsPage(),
           MapPage(),
@@ -55,10 +55,10 @@ class _HomePageState extends State<HomePage> {
           bottomTapped(index);
         },
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.face), label: 'Easymakers'),
+          BottomNavigationBarItem(icon: Icon(Icons.face), label: 'Co-workers'),
           BottomNavigationBarItem(icon: Icon(Icons.business), label: 'Clients'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.military_tech), label: 'Mission'),
+              icon: Icon(Icons.military_tech), label: 'Missions'),
           BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Map'),
         ],
       ),

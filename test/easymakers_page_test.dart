@@ -1,11 +1,11 @@
-import 'package:easymakers_tracker/ui/pages/easymakers_page.dart';
+import 'package:where_my_coworkers/ui/pages/coworkers_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Check widgets', (WidgetTester tester) async {
     // GIVEN
-    EasymakersPage page = const EasymakersPage();
+    CoWorkersPage page = const CoWorkersPage();
 
     // WHEN
     await tester.pumpWidget(MaterialApp(

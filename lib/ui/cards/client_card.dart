@@ -1,4 +1,4 @@
-import 'package:easymakers_tracker/models/client.dart';
+import 'package:where_my_coworkers/models/client.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

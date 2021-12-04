@@ -1,6 +1,6 @@
-import 'package:easymakers_tracker/models/client.dart';
-import 'package:easymakers_tracker/models/easymaker.dart';
-import 'package:easymakers_tracker/ui/forms/mission_form.dart';
+import 'package:where_my_coworkers/models/client.dart';
+import 'package:where_my_coworkers/models/coworker.dart';
+import 'package:where_my_coworkers/ui/forms/mission_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -19,8 +19,8 @@ void main() {
     expect(find.widgetWithText(AppBar, 'New Mission'), findsOneWidget);
     expect(
         find.byWidgetPredicate((Widget widget) =>
-            widget is DropdownButtonFormField<Easymaker> &&
-            widget.decoration.labelText == 'Easymaker *'),
+            widget is DropdownButtonFormField<CoWorker> &&
+            widget.decoration.labelText == 'Co-worker *'),
         findsOneWidget);
     expect(
         find.byWidgetPredicate((Widget widget) =>

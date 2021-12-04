@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.grog.easymakers_tracker">
+    package="com.grog.where_my_coworkers">
    <application
-        android:label="easymakers_tracker"
+        android:label="where_my_coworkers"
         android:icon="@mipmap/ic_launcher">
 
        <uses-permission android:name="android.permission.INTERNET"/>

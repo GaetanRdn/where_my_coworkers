@@ -1,36 +1,35 @@
-import 'package:easymakers_tracker/models/easymaker.dart';
-import 'package:easymakers_tracker/stores/mission_storage.dart';
-import 'package:easymakers_tracker/ui/cards/easymaker_card.dart';
-import 'package:easymakers_tracker/ui/forms/easymaker_form.dart';
+import 'package:where_my_coworkers/models/coworker.dart';
+import 'package:where_my_coworkers/stores/coworker_storage.dart';
+import 'package:where_my_coworkers/stores/mission_storage.dart';
+import 'package:where_my_coworkers/ui/cards/coworker_card.dart';
+import 'package:where_my_coworkers/ui/forms/coworker_form.dart';
 import 'package:flutter/material.dart';
 
-import '../../stores/easymaker_storage.dart';
-
-class EasymakersPage extends StatefulWidget {
-  const EasymakersPage({Key? key}) : super(key: key);
+class CoWorkersPage extends StatefulWidget {
+  const CoWorkersPage({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _EasymakersPage();
+  State<StatefulWidget> createState() => _CoWorkersPage();
 }
 
-class _EasymakersPage extends State<EasymakersPage> {
-  final EasymakerStorage _storage = EasymakerStorage();
+class _CoWorkersPage extends State<CoWorkersPage> {
+  final CoWorkerStorage _storage = CoWorkerStorage();
   final MissionStorage _missionStorage = MissionStorage();
-  Future<List<Easymaker>> _easymakers = Future.value([]);
+  Future<List<CoWorker>> _coWorkers = Future.value([]);
 
   @override
   void initState() {
     super.initState();
-    loadEasymakers();
+    loadCoWorkers();
   }
 
-  void loadEasymakers() {
+  void loadCoWorkers() {
     setState(() {
-      _easymakers = _storage.getAll();
+      _coWorkers = _storage.getAll();
     });
   }
 
-  Future<void> _askForConfirmation(Easymaker easymaker) async {
+  Future<void> _askForConfirmation(CoWorker coWorker) async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
@@ -40,7 +39,7 @@ class _EasymakersPage extends State<EasymakersPage> {
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text('So ' + easymaker.firstName + ' leaves us?'),
+                Text('So ' + coWorker.firstName + ' leaves us?'),
                 const Text('This will also remove all his missions!'),
               ],
             ),
@@ -54,7 +53,7 @@ class _EasymakersPage extends State<EasymakersPage> {
               style: ButtonStyle(
                   foregroundColor: MaterialStateProperty.all(Colors.red)),
               child: const Text('Confirm'),
-              onPressed: () => remove(context, easymaker),
+              onPressed: () => remove(context, coWorker),
             ),
           ],
         );
@@ -62,9 +61,9 @@ class _EasymakersPage extends State<EasymakersPage> {
     );
   }
 
-  void remove(BuildContext context, Easymaker easymaker) {
-    _missionStorage.removeByEasymakerId(easymaker.id);
-    _storage.remove(easymaker.id).then((value) => loadEasymakers());
+  void remove(BuildContext context, CoWorker coWorker) {
+    _missionStorage.removeByCoWorkerId(coWorker.id);
+    _storage.remove(coWorker.id).then((value) => loadCoWorkers());
     const snackBar = SnackBar(
       content: Text('Removed!'),
       backgroundColor: Colors.green,
@@ -82,15 +81,15 @@ class _EasymakersPage extends State<EasymakersPage> {
       children: [
         Expanded(
           child: FutureBuilder(
-            future: _easymakers,
-            initialData: const <Easymaker>[],
+            future: _coWorkers,
+            initialData: const <CoWorker>[],
             builder: (BuildContext context,
-                AsyncSnapshot<List<Easymaker>> snapshot) {
+                AsyncSnapshot<List<CoWorker>> snapshot) {
               return ListView(
-                children: (snapshot.data ?? <Easymaker>[]).map((easymaker) {
-                  return EasymakerCard(
-                    easymaker: easymaker,
-                    onRemove: () => _askForConfirmation(easymaker),
+                children: (snapshot.data ?? <CoWorker>[]).map((CoWorker coWorker) {
+                  return CoWorkerCard(
+                    coWorker: coWorker,
+                    onRemove: () => _askForConfirmation(coWorker),
                   );
                 }).toList(),
               );
@@ -106,8 +105,8 @@ class _EasymakersPage extends State<EasymakersPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => EasymakerFormPage()),
-                      ).then((value) => loadEasymakers());
+                            builder: (context) => CoWorkerFormPage()),
+                      ).then((value) => loadCoWorkers());
                     },
                     child: const Icon(Icons.add)))),
       ],

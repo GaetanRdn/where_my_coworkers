@@ -1,5 +1,5 @@
 
-import 'package:easymakers_tracker/ui/pages/home_page.dart';
+import 'package:where_my_coworkers/ui/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {

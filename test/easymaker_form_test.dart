@@ -1,11 +1,11 @@
-import 'package:easymakers_tracker/ui/forms/easymaker_form.dart';
+import 'package:where_my_coworkers/ui/forms/coworker_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Check widgets', (WidgetTester tester) async {
     // GIVEN
-    EasymakerFormPage form = EasymakerFormPage();
+    CoWorkerFormPage form = CoWorkerFormPage();
 
     // WHEN
     await tester.pumpWidget(MaterialApp(
@@ -15,7 +15,7 @@ void main() {
 
     // THEN
     expect(find.byWidget(form), findsOneWidget);
-    expect(find.widgetWithText(AppBar, 'New Easymaker'), findsOneWidget);
+    expect(find.widgetWithText(AppBar, 'New co-worker'), findsOneWidget);
     expect(
         find.byWidgetPredicate((Widget widget) =>
             widget is TextField &&
