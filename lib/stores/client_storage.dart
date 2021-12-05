@@ -5,7 +5,7 @@ import 'package:localstore/localstore.dart';
 class ClientStorage {
   final Localstore _db = Localstore.instance;
 
-  Future<void> write(String name, double latitude, double longitude) async {
+  Future<void> create(String name, double latitude, double longitude) async {
     final id = _db.collection('clients').doc().id;
     _db
         .collection('clients')

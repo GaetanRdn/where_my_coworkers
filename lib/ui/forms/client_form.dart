@@ -31,7 +31,7 @@ class _ClientFormPageState extends State<ClientFormPage> {
   void _create() {
     if (_formKey.currentState!.validate()) {
       widget.storage
-          .write(nameCtrl.value.text.trim(), double.parse(latitudeCtrl.value.text.trim()),
+          .create(nameCtrl.value.text.trim(), double.parse(latitudeCtrl.value.text.trim()),
           double.parse(longitudeCtrl.value.text.trim()))
           .whenComplete(() {
         const snackBar = SnackBar(
